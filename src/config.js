@@ -107,24 +107,41 @@ export default {
 
   // Chapter 2: Video Footage
   {
-      id: 'chapter 2',
-      alignment: 'left',
-      hidden: false,
-      title: 'Video Footage',
-      description: "The ship appeared to survey a stretch of ocean just outside of the COMRA license area. Media accounts reported that researchers collected data, samples of seabed sediment and nodules, as well as deep-sea organisms and seawater. Footage from the expedition shows vast swathes of polymetallic nodules. The China Geological Survey did not respond to Mongabay’s request for more information.<b>",
-       
-      location: {
-        center: [-80.5, -20.5],
-        zoom: 5.25,
-        pitch: 0,
-        bearing: 0,
-      },
-      
-      mapAnimation: 'flyTo',
-      rotateAnimation: false,
-      onChapterEnter: [      ],
-      onChapterExit: [      ],
-    },
+  id: 'chapter 2',
+  type: 'stage',
+  stage: 'PlainText',
+  alignment: 'left',
+  title: 'Polymetallic nodules',
+
+  // Keep location if you still want the map to move for this “chapter”
+  location: {
+    center: [-80.5, -20.5],
+    zoom: 5.25,
+    pitch: 0,
+    bearing: 0,
+  },
+  mapAnimation: 'flyTo',
+  rotateAnimation: false,
+
+  html: `
+    <p>
+      The ship appeared to survey a stretch of ocean just outside of the COMRA license area. Media accounts reported that researchers collected data, samples of seabed sediment and nodules, as well as deep-sea organisms and seawater. Footage from the expedition shows vast swathes of polymetallic nodules. The China Geological Survey did not respond to Mongabay’s request for more information.
+    </p>
+
+    <div style="position:relative; padding-top:56.25%; height:0; overflow:hidden; border-radius:12px;">
+      <iframe
+  src="https://www.youtube.com/embed/wi6Qs6LkJdU?si=WpeJd1R7kkFSIkvP?controls=0&rel=0&iv_load_policy=3"
+  title="Polymetallic nodules"
+  style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
+    </div>
+  `,
+
+  onChapterEnter: [],
+  onChapterExit: [],
+},
 
   // Chapter 3: October 2025
   {
@@ -216,7 +233,7 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
  title: "",
 
  html:
-`   <p> “
+`   <p>
 James Fanell, the former director of intelligence and information operations for the Pacific Fleet for the U.S. navy, said it is unusual that the research vessel docked in Sanya, and not its home port. 
 </p>
 
@@ -231,7 +248,7 @@ He said he suspected data collected during the journey would go to the Chinese N
 
 <p> 
 “This ‘expedition’ was very clearly dual-purpose,” Fanell said.
-” </p> `
+</p> `
 },      
 
   ],
