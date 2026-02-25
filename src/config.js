@@ -9,7 +9,7 @@ export default {
 
   intro: {
     title: 'Deep sea mining',
-    subtitle: "Tracking china vessels.",
+    subtitle: "To understand how a Chinese research vessel might be used for both civilian and military roles, consider the paths taken within the last six months by a vessel known as the Hai Yang Di Zhi Liu Hao.",
     date: 'February 16, 2026',
 
    social: [
@@ -68,26 +68,19 @@ export default {
 
 // Plain Text
 
-//  html:
-//  <h2>Placeholder heading</h2>
-//  <p>
-//  <strong>Placeholder bold</strong> — Placeholder regular text…
-//  <em>Placeholder italic</em>, Placeholder regular text…
-//  </p> 
-
-{
-  id: "Chapter 0",
-  type: "stage",
-  stage: "PlainText",
-  title: "",
-  
-  html:
-`  
-  <p>
-To understand how a Chinese research vessel might be used for both civilian and military roles, consider the paths taken within the last six months by a vessel known as the <strong>Hai Yang Di Zhi Liu Hao</strong>.
-  </p>
-`
-},
+// {
+//   id: "Chapter 0",
+//   type: "stage",
+//   stage: "PlainText",
+//   title: "",
+//   
+//   html:
+// `  
+//   <p>
+// To understand how a Chinese research vessel might be used for both civilian and military roles, consider the paths taken within the last six months by a vessel known as the <strong>Hai Yang Di Zhi Liu Hao</strong>.
+//   </p>
+// `
+// },
 
   // Chapter 1: September 2025
 {
