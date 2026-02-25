@@ -126,14 +126,14 @@ To understand how a Chinese research vessel might be used for both civilian and 
 },
 
 
-// Visual10b: Da Yang Hao
+  // Chapter X: Placeholder
 
 {
-  id: "Visual10b",
+  id: "Placeholder",
   alignment: 'right',
 
-  title: 'Visual10b',
-  description: "Pathways around the Cook Islands. Da Yang Hao",
+  title: 'Placeholder',
+  description: "Placeholder Pathway",
 
   location: { center: [-158.067, -18.252], zoom: 4.2, pitch: 0, bearing: 0 },
   
