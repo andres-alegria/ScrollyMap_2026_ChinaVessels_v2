@@ -8,9 +8,9 @@ export default {
   theme: 'mongabay',
 
   intro: {
-    title: 'Deep sea mining',
+    title: 'Dual-purpose',
     subtitle: "To understand how a Chinese research vessel might be used for both civilian and military roles, consider the paths taken within the last six months by a vessel known as the Hai Yang Di Zhi Liu Hao.",
-    date: 'February 16, 2026',
+    date: 'March 3, 2026',
 
    social: [
       {
