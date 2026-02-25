@@ -77,7 +77,7 @@ export default {
   title: 'September 2025',
   description: "The Hai Yang Di Zhi Liu Hao ventured out towards the COMRA’s ISA-approved area in the Northwest Pacific. According to the Guangzhou Marine Geological Survey, a research institution of the China Geological Survey, funded by the government, the vessel was on a 95-day research expedition, which ended Dec. 2, 2025.",
 
-  location: { center: [150.0, 17.15], zoom: 3.25, pitch: 0, bearing: 0 },
+  location: { center: [130.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
   
   legend: [
         {
@@ -95,7 +95,7 @@ export default {
     {
       callback: "trackAnimation.start",
       options: {
-      vesselFile: "/data/tracks/Xiang_Yang_Hong01_track_June2025.geojson", 
+      vesselFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_1Sept.geojson",
       speed: 5,
       }
     }
@@ -113,13 +113,8 @@ export default {
   alignment: 'left',
   title: 'Polymetallic nodules',
 
-  // Keep location if you still want the map to move for this “chapter”
-  location: {
-    center: [-80.5, -20.5],
-    zoom: 5.25,
-    pitch: 0,
-    bearing: 0,
-  },
+  location: { center: [130.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
+
   mapAnimation: 'flyTo',
   rotateAnimation: false,
 
@@ -151,17 +146,24 @@ export default {
       title: 'October 2025',
       description: "<p>In October — while the expedition was still reportedly taking place — the vessel traveled west through the Northern Mariana Islands, a U.S. commonwealth that serves as a vital military hub, before zigzagging up and down the border of its exclusive economic zone (EEZ) as well as just outside the EEZ of neighboring Guam, another U.S. territory.</p> <br> <p>Tom Shugart, a former U.S. Navy submarine warfare officer and expert in undersea warfare with a focus on the Indo-Pacific region, told Mongabay and CNN that he believed the vessel could have motives beyond deep-sea research.</p>",
        
-      location: {
-        center: [-80.5, -20.5],
-        zoom: 5.25,
-        pitch: 0,
-        bearing: 0,
-      },
+      location: { center: [130.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
+
       
       mapAnimation: 'flyTo',
       rotateAnimation: false,
-      onChapterEnter: [      ],
-      onChapterExit: [      ],
+
+  onChapterEnter: [
+    {
+      callback: "trackAnimation.start",
+      options: {
+      vesselFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_2Oct.geojson",
+      speed: 5,
+      }
+    }
+  ],
+  onChapterExit: [
+    { callback: "trackAnimation.resume" },
+  ]
     },
     
 // Plain Text a
@@ -190,17 +192,25 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
       title: 'November 2025',
       description: "<p>A month later, while the Hai Yang Di Zhi Liu Hao was still reportedly on its research expedition, it  journeyed into the EEZ of the Federated States of Micronesia (FSM), a U.S.-allied island nation that has previously called for a moratorium on deep-sea mining. FSM includes the state of Yap, where the U.S. Air Force is investing $400 million to extend the island’s international airport runway to support American military operations. Guam and Micronesia are considered part of the “Second Island Chain,” a US line of defense against potential Chinese military aggression and a critical component of US Indo-Pacific strategy under Trump.</p><br><p>The Micronesian government did not respond to Mongabay and CNN’s questions about whether it had given China permission to conduct deep-sea research in its EEZ.",
        
-      location: {
-        center: [-80.5, -20.5],
-        zoom: 5.25,
-        pitch: 0,
-        bearing: 0,
-      },
+      location: { center: [130.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
+
       
       mapAnimation: 'flyTo',
       rotateAnimation: false,
-      onChapterEnter: [      ],
-      onChapterExit: [      ],
+
+
+  onChapterEnter: [
+    {
+      callback: "trackAnimation.start",
+      options: {
+      vesselFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_3Nov.geojson",
+      speed: 5,
+      }
+    }
+  ],
+  onChapterExit: [
+    { callback: "trackAnimation.resume" },
+  ]
     },
     
   // Chapter 5: December 2025
@@ -211,17 +221,24 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
       title: 'December 2025',
       description: "The Hai Yang Di Zhi Liu Hao then cruised through the Philippine Sea before sweeping north of Taiwan. On Dec. 13,  it docked in Sanya, a strategic maritime gateway and home to Chinese nuclear submarines.<b>",
        
-      location: {
-        center: [-80.5, -20.5],
-        zoom: 3.25,
-        pitch: 0,
-        bearing: 0,
-      },
+      location: { center: [111.0, 20.0], zoom: 4.75, pitch: 0, bearing: 0 },
       
       mapAnimation: 'flyTo',
       rotateAnimation: false,
-      onChapterEnter: [      ],
-      onChapterExit: [      ],
+
+
+  onChapterEnter: [
+    {
+      callback: "trackAnimation.start",
+      options: {
+      vesselFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_4Dec.geojson",
+      speed: 5,
+      }
+    }
+  ],
+  onChapterExit: [
+    { callback: "trackAnimation.resume" },
+  ]
     },
     
 // Plain Text b
