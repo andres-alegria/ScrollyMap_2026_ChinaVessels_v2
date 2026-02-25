@@ -111,7 +111,7 @@ export default {
   type: 'stage',
   stage: 'PlainText',
   alignment: 'left',
-  title: 'Polymetallic nodules',
+  title: '',
 
   location: { center: [130.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
 
