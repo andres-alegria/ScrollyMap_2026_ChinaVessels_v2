@@ -71,7 +71,7 @@ export default {
 
   // Chapter 1: September 2025
   {
-  id: "Chapter 1",
+  id: "chapter 1",
   alignment: 'left',
 
   title: 'September 2025',
@@ -111,7 +111,7 @@ export default {
       alignment: 'left',
       hidden: false,
       title: 'Video Footage',
-      description: "The ship appeared to survey a stretch of ocean just outside of the COMRA license area. Media accounts reported that researchers collected data, samples of seabed sediment and nodules, as well as deep-sea organisms and seawater. Footage from the expedition shows vast swathes of polymetallic nodules. The China Geological Survey did not respond to Mongabay’s request for more information.</b>",
+      description: "The ship appeared to survey a stretch of ocean just outside of the COMRA license area. Media accounts reported that researchers collected data, samples of seabed sediment and nodules, as well as deep-sea organisms and seawater. Footage from the expedition shows vast swathes of polymetallic nodules. The China Geological Survey did not respond to Mongabay’s request for more information.<b>",
        
       location: {
         center: [-80.5, -20.5],
@@ -147,10 +147,10 @@ export default {
       onChapterExit: [      ],
     },
     
-// Plain Text
+// Plain Text a
 
 {
- id: "Chapter 0",
+ id: "plain text a",
  type: "stage",
  stage: "PlainText",
  title: "",
@@ -171,7 +171,7 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
       alignment: 'left',
       hidden: false,
       title: 'November 2025',
-      description: "xxx.</b>",
+      description: "<p>A month later, while the Hai Yang Di Zhi Liu Hao was still reportedly on its research expedition, it  journeyed into the EEZ of the Federated States of Micronesia (FSM), a U.S.-allied island nation that has previously called for a moratorium on deep-sea mining. FSM includes the state of Yap, where the U.S. Air Force is investing $400 million to extend the island’s international airport runway to support American military operations. Guam and Micronesia are considered part of the “Second Island Chain,” a US line of defense against potential Chinese military aggression and a critical component of US Indo-Pacific strategy under Trump.</p><br><p>The Micronesian government did not respond to Mongabay and CNN’s questions about whether it had given China permission to conduct deep-sea research in its EEZ.",
        
       location: {
         center: [-80.5, -20.5],
@@ -188,11 +188,11 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
     
   // Chapter 5: December 2025
   {
-      id: 'chapter 3',
+      id: 'chapter 5',
       alignment: 'left',
       hidden: false,
       title: 'December 2025',
-      description: "xxx.</b>",
+      description: "The Hai Yang Di Zhi Liu Hao then cruised through the Philippine Sea before sweeping north of Taiwan. On Dec. 13,  it docked in Sanya, a strategic maritime gateway and home to Chinese nuclear submarines.<b>",
        
       location: {
         center: [-80.5, -20.5],
@@ -206,6 +206,33 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
       onChapterEnter: [      ],
       onChapterExit: [      ],
     },
+    
+// Plain Text b
+
+{
+ id: "plain text b",
+ type: "stage",
+ stage: "PlainText",
+ title: "",
+
+ html:
+`   <p> “
+James Fanell, the former director of intelligence and information operations for the Pacific Fleet for the U.S. navy, said it is unusual that the research vessel docked in Sanya, and not its home port. 
+</p>
+
+<p> 
+“Returning to Sanya is of interest because of the home-porting of PLA (People's Liberation Army) Navy ballistic missile submarines as well as the Shandong aircraft carrier,” he said in an email.
+</p>
+
+<p> 
+He said he suspected data collected during the journey would go to the Chinese Navy “to improve their situational awareness in the Philippine Sea,” where China has been accused by Manila of challenging Philippine sovereignty through "grey zone" tactics, including the alleged harassment of fishermen, blocking of resupply missions, and use of water cannons against Philippine vessels.
+ The Philippine Sea is also considered a focal point for U.S.-China competition, especially as China claims sovereignty over a large swath of the Philippine EEZ.
+</p>
+
+<p> 
+“This ‘expedition’ was very clearly dual-purpose,” Fanell said.
+” </p> `
+},      
 
   ],
 };
