@@ -109,6 +109,26 @@ export default {
       vesselFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_1Sept.geojson",
       speed: 5,
       }
+    },
+       {
+         
+      layer: 'Haiyangdizhiliuhao4Dec',
+      opacity: 0,
+    },
+         {
+         
+      layer: 'Haiyangdizhiliuhao3Nov',
+      opacity: 0,
+    },
+       {
+         
+      layer: 'Haiyangdizhiliuhao2Oct',
+      opacity: 0,
+    },
+       {
+         
+      layer: 'Haiyangdizhiliuhao1Sep',
+      opacity: 0,
     }
   ],
   onChapterExit: [
@@ -215,6 +235,26 @@ legend: [
       vesselFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_2Oct.geojson",
       speed: 5,
       }
+    },
+       {
+         
+      layer: 'Haiyangdizhiliuhao4Dec',
+      opacity: 0,
+    },
+         {
+         
+      layer: 'Haiyangdizhiliuhao3Nov',
+      opacity: 0,
+    },
+       {
+         
+      layer: 'Haiyangdizhiliuhao2Oct',
+      opacity: 0,
+    },
+       {
+         
+      layer: 'Haiyangdizhiliuhao1Sep',
+      opacity: 1,
     }
   ],
   onChapterExit: [
@@ -262,6 +302,26 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
       vesselFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_3Nov.geojson",
       speed: 5,
       }
+    },
+       {
+         
+      layer: 'Haiyangdizhiliuhao4Dec',
+      opacity: 0,
+    },
+         {
+         
+      layer: 'Haiyangdizhiliuhao3Nov',
+      opacity: 0,
+    },
+       {
+         
+      layer: 'Haiyangdizhiliuhao2Oct',
+      opacity: 1,
+    },
+       {
+         
+      layer: 'Haiyangdizhiliuhao1Sep',
+      opacity: 1,
     }
   ],
   onChapterExit: [
@@ -290,6 +350,26 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
       vesselFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_4Dec.geojson",
       speed: 5,
       }
+    },
+       {
+         
+      layer: 'Haiyangdizhiliuhao4Dec',
+      opacity: 0,
+    },
+         {
+         
+      layer: 'Haiyangdizhiliuhao3Nov',
+      opacity: 1,
+    },
+       {
+         
+      layer: 'Haiyangdizhiliuhao2Oct',
+      opacity: 1,
+    },
+       {
+         
+      layer: 'Haiyangdizhiliuhao1Sep',
+      opacity: 1,
     }
   ],
   onChapterExit: [
