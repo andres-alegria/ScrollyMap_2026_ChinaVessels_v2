@@ -80,14 +80,25 @@ export default {
   location: { center: [130.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
   
   legend: [
-        {
-          title: 'Exploration Areas',
+             {
+          title: 'ISA Exploration Areas',
           color: '#e66d6d',
-          border: '#f6bcb3',
+          border: '#ffffff',
         },
         {
-          title: 'Reserve Areas',
-          color: '#006a54',
+          title: 'ISA Reserve Areas',
+          color: '#f3e677',
+          border: '#ffffff',
+        },
+                {
+          title: 'Exclusive Economic Zones (EZZs)',
+          color: '#005b67',
+          border: '#ffffff',
+        },
+                        {
+          title: 'Deep-sea mineral areas',
+          color: '#000000',
+          pattern: 'Hash',
         },
          ],
   
@@ -115,6 +126,29 @@ export default {
 
   location: { center: [130.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
 
+legend: [
+             {
+          title: 'ISA Exploration Areas',
+          color: '#e66d6d',
+          border: '#ffffff',
+        },
+        {
+          title: 'ISA Reserve Areas',
+          color: '#f3e677',
+          border: '#ffffff',
+        },
+                {
+          title: 'Exclusive Economic Zones (EZZs)',
+          color: '#005b67',
+          border: '#ffffff',
+        },
+                        {
+          title: 'Deep-sea mineral areas',
+          color: '#000000',
+          pattern: 'Hash',
+        },
+         ],
+         
   mapAnimation: 'flyTo',
   rotateAnimation: false,
 
@@ -148,6 +182,28 @@ export default {
        
       location: { center: [130.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
 
+legend: [
+             {
+          title: 'ISA Exploration Areas',
+          color: '#e66d6d',
+          border: '#ffffff',
+        },
+        {
+          title: 'ISA Reserve Areas',
+          color: '#f3e677',
+          border: '#ffffff',
+        },
+                {
+          title: 'Exclusive Economic Zones (EZZs)',
+          color: '#005b67',
+          border: '#ffffff',
+        },
+                        {
+          title: 'Deep-sea mineral areas',
+          color: '#000000',
+          pattern: 'Hash',
+        },
+         ],
       
       mapAnimation: 'flyTo',
       rotateAnimation: false,
