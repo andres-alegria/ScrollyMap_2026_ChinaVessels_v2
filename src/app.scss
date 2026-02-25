@@ -11,7 +11,7 @@ body {
 a,
 a:hover,
 a:visited {
-  color: #0071bc;
+  color: #1c6572;
 }
 
 .mapboxgl-map {
@@ -38,7 +38,7 @@ a:visited {
 
 #features {
   padding-top: 10vh;
-  padding-bottom: 10vh;
+  padding-bottom: 0vh;
   z-index: 100;
 }
 
@@ -50,31 +50,31 @@ a:visited {
 }
 
 .light {
-  color: #444;
-  background-color: #fafafa;
+  color: #d5d5d5;
+  background-color: #f8f8f8;
 }
 
 .mongabay {
-  color: #222;
-  background-color: #fff;
+  color: #181818;
+  background-color: #f8f8f8;
 }
 
 .dark {
-  color: #fafafa;
-  background-color: #444;
+  color: #f8f8f8;
+  background-color: #d5d5d5;
 }
 
 .footer-mongabay {
-  color: #fff;
-  background-color: #222;
+  color: #f8f8f8;
+  background-color: #181818;
 }
 
 .footer-light {
-  color: #fff;
-  background-color: #222;
+  color: #f8f8f8;
+  background-color: #181818;
 }
 
 .footer-dark {
-  color: #fff;
-  background-color: #222;
+  color: #f8f8f8;
+  background-color: #181818;
 }

@@ -1,6 +1,6 @@
 .stage-plain {
-  background: #ffffff;
-  color: #092f29;
+  background: #f8f8f8;
+  color: #181818;
 }
 
 .plain-article {
@@ -62,6 +62,15 @@
   font-weight: 600;
   line-height: 1.25;
 
-  color: #092f29;
+  color: #181818;
   margin: 0 0 24px 0;
+}
+
+/* If the last item in the scrolly is a PlainText stage, remove bottom gap */
+#features .step.step-stage:last-child .plain-article {
+  padding-bottom: 0;
+}
+
+#features .step.step-stage:last-child .plain-article p:last-child {
+  margin-bottom: 0;
 }
