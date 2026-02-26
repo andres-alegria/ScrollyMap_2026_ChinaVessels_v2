@@ -82,18 +82,18 @@ export default {
   legend: [
              {
           title: 'ISA Exploration Areas',
-          color: '#e66d6d',
-          border: '#ffffff',
+          color: '#f8f8f8',
+          border: '#438c95',
         },
         {
           title: 'ISA Reserve Areas',
-          color: '#f3e677',
-          border: '#ffffff',
+          color: '#bbe8ad',
+          border: '#f8f8f8',
         },
                 {
           title: 'Exclusive Economic Zones (EZZs)',
-          color: '#005b67',
-          border: '#ffffff',
+          color: '#a699b6',
+          border: '#f8f8f8',
         },
                         {
           title: 'Deep-sea mineral areas',
@@ -149,18 +149,18 @@ export default {
 legend: [
              {
           title: 'ISA Exploration Areas',
-          color: '#e66d6d',
-          border: '#ffffff',
+          color: '#f8f8f8',
+          border: '#438c95',
         },
         {
           title: 'ISA Reserve Areas',
-          color: '#f3e677',
-          border: '#ffffff',
+          color: '#bbe8ad',
+          border: '#f8f8f8',
         },
                 {
           title: 'Exclusive Economic Zones (EZZs)',
-          color: '#005b67',
-          border: '#ffffff',
+          color: '#a699b6',
+          border: '#f8f8f8',
         },
                         {
           title: 'Deep-sea mineral areas',
@@ -205,18 +205,18 @@ legend: [
 legend: [
              {
           title: 'ISA Exploration Areas',
-          color: '#e66d6d',
-          border: '#ffffff',
+          color: '#f8f8f8',
+          border: '#438c95',
         },
         {
           title: 'ISA Reserve Areas',
-          color: '#f3e677',
-          border: '#ffffff',
+          color: '#bbe8ad',
+          border: '#f8f8f8',
         },
                 {
           title: 'Exclusive Economic Zones (EZZs)',
-          color: '#005b67',
-          border: '#ffffff',
+          color: '#a699b6',
+          border: '#f8f8f8',
         },
                         {
           title: 'Deep-sea mineral areas',
@@ -348,7 +348,7 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
       callback: "trackAnimation.start",
       options: {
       vesselFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_4Dec.geojson",
-      speed: 5,
+      speed: 3,
       }
     },
        {

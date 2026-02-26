@@ -102,7 +102,7 @@ useEffect(() => {
         type: "line",
         source: SOURCE_ID,
         paint: {
-          "line-color": "#f6bcb3",  
+          "line-color": "#e46d6e",  
           "line-width": 2,
           "line-opacity": 0.9
         }
@@ -128,8 +128,8 @@ if (!map.getLayer(DOT_LAYER_ID)) {
     type: "circle",
     source: DOT_SOURCE_ID,
     paint: {
-      "circle-radius": 4,
-      "circle-color": "#891916",
+      "circle-radius": 6,
+      "circle-color": "#e46d6e",
       "circle-stroke-width": 0.5,
       "circle-stroke-color": "#fafafa"
     }
