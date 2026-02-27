@@ -106,8 +106,17 @@ export default {
     {
       callback: "trackAnimation.start",
       options: {
-      vesselFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_1Sept.geojson",
+      trackFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_1Sept.geojson",
       speed: 5,
+      marker: {
+        type: "svg",
+        svg: "boat.svg", // put SVG in /public/
+        size: 1,                         // icon-size
+        color: "#181818",                   // optional (best for monochrome SVGs)
+        borderColor: "#f8f8f8",   // stroke
+        borderWidth: 1,          // stroke-width
+        rotate: 0                           // degrees
+      },
       }
     },
        {
@@ -232,8 +241,17 @@ legend: [
     {
       callback: "trackAnimation.start",
       options: {
-      vesselFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_2Oct.geojson",
+      trackFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_2Oct.geojson",
       speed: 5,
+            marker: {
+        type: "svg",
+        svg: "boat.svg", // put SVG in /public/
+        size: 1,                         // icon-size
+        color: "#181818",                   // optional (best for monochrome SVGs)
+        borderColor: "#f8f8f8",   // stroke
+        borderWidth: 1,          // stroke-width
+        rotate: 0                           // degrees
+      },
       }
     },
        {
@@ -299,8 +317,17 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
     {
       callback: "trackAnimation.start",
       options: {
-      vesselFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_3Nov.geojson",
+      trackFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_3Nov.geojson",
       speed: 5,
+            marker: {
+        type: "svg",
+        svg: "boat.svg", // put SVG in /public/
+        size: 1,                         // icon-size
+        color: "#181818",                   // optional (best for monochrome SVGs)
+        borderColor: "#f8f8f8",   // stroke
+        borderWidth: 1,          // stroke-width
+        rotate: 0                           // degrees
+      },
       }
     },
        {
@@ -347,8 +374,17 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
     {
       callback: "trackAnimation.start",
       options: {
-      vesselFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_4Dec.geojson",
+      trackFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_4Dec.geojson",
       speed: 3,
+        marker: {
+        type: "svg",
+        svg: "boat.svg", // put SVG in /public/
+        size: 1,                         // icon-size
+        color: "#181818",                   // optional (best for monochrome SVGs)
+        borderColor: "#f8f8f8",   // stroke
+        borderWidth: 1,          // stroke-width
+        rotate: 0                           // degrees
+      },
       }
     },
        {
