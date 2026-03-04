@@ -221,8 +221,8 @@ useEffect(() => {
         type: "line",
         source: SOURCE_ID,
         paint: {
-          "line-color": "#e46d6e",  
-          "line-width": 2,
+          "line-color": "f1e477",  
+          "line-width": 3,
           "line-opacity": 0.9
         }
       });
