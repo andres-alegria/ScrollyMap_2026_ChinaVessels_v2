@@ -110,16 +110,16 @@ export default {
       speed: 5,
       line: {
       color: "#e0ce63",
-      width: 3,
+      width: 1,
       opacity: 1
     },
       marker: {
         type: "svg",
         svg: "boat.svg", // put SVG in /public/
-        size: 1,                         // icon-size
+        size: 2,                         // icon-size
         color: "#e0ce63",                   // optional (best for monochrome SVGs)
         borderColor: "#181818",   // stroke
-        borderWidth: 1,          // stroke-width
+        borderWidth: 2,          // stroke-width
         rotate: 0                           // degrees
       },
       }
@@ -233,13 +233,18 @@ legend: [
       options: {
       trackFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_2Oct.geojson",
       speed: 5,
-            marker: {
+      line: {
+      color: "#e0ce63",
+      width: 1,
+      opacity: 1
+    },
+      marker: {
         type: "svg",
         svg: "boat.svg", // put SVG in /public/
-        size: 1,                         // icon-size
+        size: 2,                         // icon-size
         color: "#e0ce63",                   // optional (best for monochrome SVGs)
         borderColor: "#181818",   // stroke
-        borderWidth: 1,          // stroke-width
+        borderWidth: 2,          // stroke-width
         rotate: 0                           // degrees
       },
       }
@@ -279,7 +284,7 @@ legend: [
       title: 'November 2025',
       description: "<p>A month later, while the Hai Yang Di Zhi Liu Hao was still reportedly on its research expedition, it journeyed into the EEZ of the Federated States of Micronesia (FSM), a U.S.ally.Guam and Micronesia are considered part of the “Second Island Chain,” a US line of defense against potential Chinese military aggression.",
        
-      location: { center: [130.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
+      location: { center: [132.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
 
       
       mapAnimation: 'flyTo',
@@ -292,15 +297,21 @@ legend: [
       options: {
       trackFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_3Nov.geojson",
       speed: 5,
-            marker: {
+      line: {
+      color: "#e0ce63",
+      width: 1,
+      opacity: 1
+    },
+       marker: {
         type: "svg",
         svg: "boat.svg", // put SVG in /public/
-        size: 1,                         // icon-size
+        size: 2,                         // icon-size
         color: "#e0ce63",                   // optional (best for monochrome SVGs)
         borderColor: "#181818",   // stroke
-        borderWidth: 1,          // stroke-width
+        borderWidth: 2,          // stroke-width
         rotate: 0                           // degrees
       },
+
       }
     },
   { layer: 'Haiyangdizhiliuhao4Dec', opacity: 0 },
@@ -334,13 +345,18 @@ legend: [
       options: {
       trackFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_4Dec.geojson",
       speed: 3,
-        marker: {
+      line: {
+      color: "#e0ce63",
+      width: 1,
+      opacity: 1
+    },
+      marker: {
         type: "svg",
         svg: "boat.svg", // put SVG in /public/
-        size: 1,                         // icon-size
+        size: 2,                         // icon-size
         color: "#e0ce63",                   // optional (best for monochrome SVGs)
         borderColor: "#181818",   // stroke
-        borderWidth: 1,          // stroke-width
+        borderWidth: 2,          // stroke-width
         rotate: 0                           // degrees
       },
       }

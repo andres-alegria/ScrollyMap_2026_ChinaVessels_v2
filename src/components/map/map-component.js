@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { transformRequest } from './map-utils';
 import { useScrollFunctionality, useHandleResize } from './map-hooks';
 import ReactMapGL, { Marker } from 'react-map-gl';
@@ -12,6 +12,9 @@ const Map = (props) => {
   const [loaded, setLoaded] = useState(false);
   const [externalLayersOpacity, setExternalLayersOpacity] = useState({});
   const [map, setMap] = useState(null);
+  const [animatedTrackHead, setAnimatedTrackHead] = useState(null);
+  const [animatedTrackMarker, setAnimatedTrackMarker] = useState(null);
+  const [animatedMarkerSvgMarkup, setAnimatedMarkerSvgMarkup] = useState('');
   const mapRef = useRef(null);
   const mapContainerRef = useRef(null);
   const initialLocation = chapters[0].location;
@@ -32,6 +35,52 @@ const Map = (props) => {
   const [viewport, setViewport] = useState(initialViewport);
   const updateViewport = (newViewport) =>
     setViewport({ ...viewport, ...newViewport });
+
+  const animatedMarkerStyle = useMemo(() => {
+    if (!animatedTrackMarker) return null;
+
+    const size = Number(animatedTrackMarker.size ?? 1);
+    const pixelSize = Math.max(12, 28 * size);
+    const rotation = Number(animatedTrackMarker.rotate ?? 0);
+
+    return {
+      wrapper: {
+        width: `${pixelSize}px`,
+        height: `${pixelSize}px`,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        pointerEvents: 'none',
+        transform: `translate(-50%, -50%) rotate(${rotation}deg)`
+      }
+    };
+  }, [animatedTrackMarker]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const loadSvgMarkup = async () => {
+      if (!(animatedTrackMarker?.type === 'svg' && animatedTrackMarker?.svg)) {
+        setAnimatedMarkerSvgMarkup('');
+        return;
+      }
+
+      try {
+        const res = await fetch(`/${animatedTrackMarker.svg.replace(/^\/+/, '')}`);
+        const text = await res.text();
+        if (!cancelled) setAnimatedMarkerSvgMarkup(text);
+      } catch (err) {
+        console.error('Failed to load marker SVG:', err);
+        if (!cancelled) setAnimatedMarkerSvgMarkup('');
+      }
+    };
+
+    loadSvgMarkup();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [animatedTrackMarker]);
 
   useHandleResize(updateViewport);
 
@@ -114,7 +163,8 @@ if (!map.getLayer(DOT_LAYER_ID)) {
       "circle-radius": 4,
       "circle-color": "#530e0d",
       "circle-stroke-width": 0.5,
-      "circle-stroke-color": "#ffffff"
+      "circle-stroke-color": "#ffffff",
+      "circle-opacity": 1
     }
   });
 }
@@ -138,7 +188,9 @@ useEffect(() => {
   if (!loaded || !map) return;
 
   const SOURCE_ID = "vessel-anim";
+  const LAYER_ID = "vessel-anim-line";
   const DOT_SOURCE_ID = "vessel-dot";
+  const DOT_LAYER_ID = "vessel-dot-layer";
 
 
   let parts = [];            // array of coordinate arrays (each "part" is a LineString)
@@ -152,6 +204,42 @@ useEffect(() => {
   // “session” state
   let currentVesselFile = null;
   let speed = 2;
+  let currentLineStyle = {
+    color: "#530e0d",
+    width: 1,
+    opacity: 0.5
+  };
+  let currentMarker = null;
+
+  const applyLineStyle = (line = {}) => {
+    currentLineStyle = {
+      color: line.color ?? "#530e0d",
+      width: line.width ?? 1,
+      opacity: line.opacity ?? 0.5
+    };
+
+    if (map.getLayer(LAYER_ID)) {
+      map.setPaintProperty(LAYER_ID, "line-color", currentLineStyle.color);
+      map.setPaintProperty(LAYER_ID, "line-width", currentLineStyle.width);
+      map.setPaintProperty(LAYER_ID, "line-opacity", currentLineStyle.opacity);
+    }
+  };
+
+  const applyMarkerStyle = (marker = {}) => {
+    const useSvg = marker?.type === "svg" && marker?.svg;
+    currentMarker = useSvg ? marker : null;
+    setAnimatedTrackMarker(useSvg ? marker : null);
+
+    if (map.getLayer(DOT_LAYER_ID)) {
+      map.setPaintProperty(DOT_LAYER_ID, "circle-opacity", useSvg ? 0 : 1);
+      map.setPaintProperty(DOT_LAYER_ID, "circle-radius", useSvg ? 0 : 4);
+      if (!useSvg) {
+        map.setPaintProperty(DOT_LAYER_ID, "circle-color", marker?.color ?? "#530e0d");
+        map.setPaintProperty(DOT_LAYER_ID, "circle-stroke-width", marker?.borderWidth ?? 0.5);
+        map.setPaintProperty(DOT_LAYER_ID, "circle-stroke-color", marker?.borderColor ?? "#ffffff");
+      }
+    }
+  };
 
   
   const setFeatures = (features) => {
@@ -173,6 +261,12 @@ const setDot = (coord) => {
     properties: {},
     geometry: { type: "Point", coordinates: coord }
   });
+
+  if (Array.isArray(coord) && coord.length === 2) {
+    setAnimatedTrackHead(coord);
+  } else {
+    setAnimatedTrackHead(null);
+  }
 };
 
   
@@ -230,6 +324,7 @@ const setDot = (coord) => {
     // keep currentVesselFile so you can decide whether to restart or not
     setFeatures([]); // clear drawn line
     setDot([]);
+    setAnimatedTrackHead(null);
 
   };
 
@@ -297,7 +392,7 @@ const getBoundsFromParts = () => {
 // trackAnimation.start(options)
 //
 // Options you can set from config.js:
-//   vesselFile: "/data/tracks/YourFile.geojson"  (required)
+//   vesselFile: "/data/tracks/YourFile.geojson" or trackFile: "/data/tracks/YourFile.geojson"  (required)
 //   speed: Number
 //     - how fast the animation advances per frame (higher = faster).
 //   camera: "chapter" | "static" | "start" | "fit"
@@ -318,14 +413,20 @@ const start = async ({
   camera = "chapter",       // "chapter" | "static" | "start" | "fit"
   cameraPadding = 80,       // used by "fit"
   flyToStart,               // optional override; if omitted we infer from camera
-  restart = false
+  restart = false,
+  line = {},
+  marker = {}
 } = {}) => {
+
     const file = trackFile || vesselFile;
 
     if (!file) {
       console.warn("trackAnimation.start: missing trackFile/vesselFile");
       return;
     }
+
+    applyLineStyle(line);
+    applyMarkerStyle(marker);
 
     // same vessel + not restarting: just resume where we left off
     if (currentVesselFile === file && parts.length && !restart) {
@@ -391,6 +492,9 @@ if (camera === "fit") {
     // cleanup if component unmounts
     if (animId) cancelAnimationFrame(animId);
     if (window.trackAnimation) delete window.trackAnimation;
+    setAnimatedTrackHead(null);
+    setAnimatedTrackMarker(null);
+    setAnimatedMarkerSvgMarkup('');
   };
 }, [loaded, map]);
 
@@ -429,6 +533,24 @@ if (camera === "fit") {
         doubleClickZoom={false}
         {...viewport}
       >
+        {animatedTrackHead && animatedTrackMarker?.type === 'svg' && animatedMarkerStyle && (
+          <Marker
+            longitude={animatedTrackHead[0]}
+            latitude={animatedTrackHead[1]}
+            anchor="center"
+          >
+            <div
+              style={{
+                ...animatedMarkerStyle.wrapper,
+                color: animatedTrackMarker.color || '#000000',
+                '--icon-stroke': animatedTrackMarker.borderColor || 'transparent',
+                '--icon-stroke-width': `${animatedTrackMarker.borderWidth ?? 0}`
+              }}
+              aria-hidden="true"
+              dangerouslySetInnerHTML={{ __html: animatedMarkerSvgMarkup }}
+            />
+          </Marker>
+        )}
         {showMarkers && (
           <Marker
             longitude={markerPosition.longitude}
