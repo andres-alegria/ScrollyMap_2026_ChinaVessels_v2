@@ -284,7 +284,7 @@ legend: [
       title: 'November 2025',
       description: "<p>A month later, while the Hai Yang Di Zhi Liu Hao was still reportedly on its research expedition, it journeyed into the EEZ of the Federated States of Micronesia (FSM), a U.S.ally.Guam and Micronesia are considered part of the “Second Island Chain,” a US line of defense against potential Chinese military aggression.",
        
-      location: { center: [132.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
+      location: { center: [130.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
 
       
       mapAnimation: 'flyTo',
