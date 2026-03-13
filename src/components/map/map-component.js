@@ -14,144 +14,8 @@ const Map = (props) => {
   const [map, setMap] = useState(null);
   const mapRef = useRef(null);
   const mapContainerRef = useRef(null);
-
-  // Cache for dynamically generated marker images (e.g. SVG with a specific color)
-  // Keyed by a stable string so we don't re-add images unnecessarily.
-  const markerImageCacheRef = useRef(new Set());
-
-  const getMarkerStyleFromAction = (action) => {
-    // Configure the animated "head" marker (the dot moving along the track).
-    //
-    // IMPORTANT: In this template, your chapter action usually looks like:
-    //   { callback: "trackAnimation.start", options: { trackFile, speed, marker: {...} } }
-    //
-    // So marker config is typically under action.options.marker (not action.marker).
-    //
-    // Fallbacks:
-    // - If action is already the options object, it can be action.marker
-    // - If trackAnimation.start was called, we also store the last marker on window.__TRACK_MARKER__
-    const marker =
-      action?.options?.marker ||
-      action?.marker ||
-      (typeof window !== 'undefined' ? window.__TRACK_MARKER__ : null) ||
-      {};
-
-    return {
-      type: marker.type || 'circle',
-      // SVG can be either:
-      //  - a URL starting with "/" or "http"
-      //  - an inline SVG string (must include "<svg")
-      svg: marker.svg || null,
-      // For SVG markers, setting `useOriginalColors: true` keeps the SVG's own colors.
-      useOriginalColors: marker.useOriginalColors === true,
-      color: marker.color || '#e46d6e',
-      size: typeof marker.size === 'number' ? marker.size : 1,
-      rotate: typeof marker.rotate === 'number' ? marker.rotate : 0,
-      borderColor: marker.borderColor || null,
-      borderWidth: typeof marker.borderWidth === 'number' ? marker.borderWidth : 0,
-      circleRadius: typeof marker.circleRadius === 'number' ? marker.circleRadius : 6,
-      circleStrokeWidth: typeof marker.circleStrokeWidth === 'number' ? marker.circleStrokeWidth : 0.5,
-      circleStrokeColor: marker.circleStrokeColor || '#fafafa'
-    };
-  };
-
-  
-  const buildStyledSvg = (rawSvg, { fillColor, strokeColor, strokeWidth, useOriginalColors }) => {
-    if (!rawSvg || typeof rawSvg !== 'string') return null;
-
-    const hasStroke = strokeColor && typeof strokeWidth === 'number' && strokeWidth > 0;
-
-    // If the user wants to keep the SVG's original colors and no border is requested,
-    // return as-is.
-    if (useOriginalColors === true && !hasStroke) return rawSvg;
-
-    const safeFill = fillColor || null;
-    const safeStroke = strokeColor || null;
-    const safeStrokeWidth = hasStroke ? strokeWidth : 0;
-
-    // Inject CSS so shapes inherit requested colors/border.
-    // Preserve explicit "none" fills/strokes.
-    //
-    // Notes:
-    // - For monochrome SVGs, fillColor + borderColor works well.
-    // - If useOriginalColors=true and border is requested, fills remain but strokes are forced.
-    const css = `
-      <style>
-        ${useOriginalColors === true ? '' : (safeFill ? `* { fill: ${safeFill} !important; }` : '')}
-        ${hasStroke ? `* { stroke: ${safeStroke} !important; stroke-width: ${safeStrokeWidth} !important; }` : ''}
-        [fill="none"] { fill: none !important; }
-        [stroke="none"] { stroke: none !important; }
-      </style>
-    `;
-
-    return rawSvg.replace(/<svg(\s[^>]*)?>/i, (m) => `${m}${css}`);
-  };
-
-
-  const fetchSvgText = async (svg) => {
-    if (!svg) return null;
-    if (typeof svg !== 'string') return null;
-    if (svg.trim().startsWith('<svg')) return svg;
-
-    // Treat as URL. Relative URLs should point into /public (e.g. /assets/marker.svg)
-    const res = await fetch(svg);
-    return await res.text();
-  };
-
-  const addSvgMarkerImage = async (mapInstance, { svg, fillColor, strokeColor, strokeWidth, useOriginalColors, imageId }) => {
-    if (!mapInstance || !svg || !imageId) return;
-    if (mapInstance.hasImage(imageId)) return;
-    if (markerImageCacheRef.current.has(imageId)) return;
-
-    const raw = await fetchSvgText(svg);
-    if (!raw) return;
-
-    const colored = buildStyledSvg(raw, { fillColor, strokeColor, strokeWidth, useOriginalColors });
-    if (!colored) return;
-
-    // Convert SVG string -> Image -> Mapbox image
-    const blob = new Blob([colored], { type: 'image/svg+xml;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-
-    await new Promise((resolve) => {
-      const img = new Image();
-      img.onload = () => {
-        try {
-          mapInstance.addImage(imageId, img, { pixelRatio: 2 });
-          markerImageCacheRef.current.add(imageId);
-        } catch (e) {
-          // addImage can throw if style isn't ready; keep it silent.
-          // The layer effect below will retry on next action/styledata.
-        }
-        URL.revokeObjectURL(url);
-        resolve();
-      };
-      img.onerror = () => {
-        URL.revokeObjectURL(url);
-        resolve();
-      };
-      img.src = url;
-    });
-  };
-
-  // Use the first chapter that actually has a location (so PlainText can be first)
-  const firstChapterWithLocation = chapters.find(
-    (c) =>
-      c &&
-      c.location &&
-      Array.isArray(c.location.center) &&
-      c.location.center.length === 2
-  );
-
-  const initialLocation = firstChapterWithLocation?.location ?? {
-    center: [0, 0],
-    zoom: 1,
-    pitch: 0,
-    bearing: 0
-  };
-
+  const initialLocation = chapters[0].location;
   const [initialLongitude, initialLatitude] = initialLocation.center;
-
   const [markerPosition, setMarkerPosition] = useState({
     latitude: initialLatitude,
     longitude: initialLongitude
@@ -194,15 +58,15 @@ useEffect(() => {
   return undefined;
 }, [mapRef, loaded, setMap]);
 
-// 1) Animated track setup (source + layer)
+// 1) Animated vessel track setup (source + layer)
 useEffect(() => {
   if (!loaded || !map) return;
 
-  const SOURCE_ID = "icon-anim";
-  const LAYER_ID = "icon-anim-line";
+  const SOURCE_ID = "vessel-anim";
+  const LAYER_ID = "vessel-anim-line";
 
-  const DOT_SOURCE_ID = "icon-dot";
-  const DOT_LAYER_ID = "icon-dot-layer";
+  const DOT_SOURCE_ID = "vessel-dot";
+  const DOT_LAYER_ID = "vessel-dot-layer";
 
 
   const ensureAnimLayer = () => {
@@ -221,9 +85,9 @@ useEffect(() => {
         type: "line",
         source: SOURCE_ID,
         paint: {
-          "line-color": "f1e477",  
-          "line-width": 3,
-          "line-opacity": 0.9
+          "line-color": "#530e0d",  
+          "line-width": 1,
+          "line-opacity": 0.5
         }
       });
     }
@@ -240,8 +104,20 @@ if (!map.getSource(DOT_SOURCE_ID)) {
   });
 }
 
-// dot layer is created in a separate effect so it can switch between
-// circle and SVG symbol based on config (currentAction.marker).
+// dot layer
+if (!map.getLayer(DOT_LAYER_ID)) {
+  map.addLayer({
+    id: DOT_LAYER_ID,
+    type: "circle",
+    source: DOT_SOURCE_ID,
+    paint: {
+      "circle-radius": 4,
+      "circle-color": "#530e0d",
+      "circle-stroke-width": 0.5,
+      "circle-stroke-color": "#ffffff"
+    }
+  });
+}
     
     
   };
@@ -254,117 +130,15 @@ if (!map.getSource(DOT_SOURCE_ID)) {
 }, [loaded, map]);
 
 
-// 1b) Animated track "head" marker styling (circle OR SVG)
+
+
+
+// 2) Animated vessel track controller (plays ALL parts, antimeridian-safe, pause/resume)
 useEffect(() => {
   if (!loaded || !map) return;
 
-  const DOT_SOURCE_ID = "icon-dot";
-  const DOT_LAYER_ID = "icon-dot-layer";
-
-  const applyMarkerStyle = async () => {
-    const style = getMarkerStyleFromAction(currentAction);
-
-    // Ensure dot source exists (created in the other effect, but style reloads can reset).
-    if (!map.getSource(DOT_SOURCE_ID)) {
-      map.addSource(DOT_SOURCE_ID, {
-        type: "geojson",
-        data: {
-          type: "Feature",
-          properties: {},
-          geometry: { type: "Point", coordinates: [] }
-        }
-      });
-    }
-
-    // If the existing layer type doesn't match what we need, remove it.
-    const existing = map.getLayer(DOT_LAYER_ID);
-    if (existing) {
-      const wantsCircle = style.type === 'circle' || !style.svg;
-      const isCircle = existing.type === 'circle';
-      const isSymbol = existing.type === 'symbol';
-      if ((wantsCircle && !isCircle) || (!wantsCircle && !isSymbol)) {
-        map.removeLayer(DOT_LAYER_ID);
-      }
-    }
-
-    const wantsCircle = style.type === 'circle' || !style.svg;
-    if (wantsCircle) {
-      if (!map.getLayer(DOT_LAYER_ID)) {
-        map.addLayer({
-          id: DOT_LAYER_ID,
-          type: "circle",
-          source: DOT_SOURCE_ID,
-          paint: {
-            "circle-radius": style.circleRadius,
-            "circle-color": style.color,
-            "circle-stroke-width": style.circleStrokeWidth,
-            "circle-stroke-color": style.circleStrokeColor
-          }
-        });
-      } else {
-        // Update styling live
-        map.setPaintProperty(DOT_LAYER_ID, "circle-radius", style.circleRadius);
-        map.setPaintProperty(DOT_LAYER_ID, "circle-color", style.color);
-        map.setPaintProperty(DOT_LAYER_ID, "circle-stroke-width", style.circleStrokeWidth);
-        map.setPaintProperty(DOT_LAYER_ID, "circle-stroke-color", style.circleStrokeColor);
-      }
-      return;
-    }
-
-    // SVG marker (symbol layer)
-    // Create a stable image id per SVG+color so different chapters can use different colors.
-    const colorForSvg = style.useOriginalColors ? null : style.color;
-    const svgKey = `${style.svg}::${colorForSvg || 'original'}::${style.borderColor || 'none'}::${style.borderWidth || 0}::${style.useOriginalColors ? 'orig' : 'flat'}`;
-    const imageId = `icon-marker-svg-${btoa(unescape(encodeURIComponent(svgKey))).replace(/=+/g, '')}`;
-
-    await addSvgMarkerImage(map, {
-      svg: style.svg,
-      fillColor: colorForSvg,
-      strokeColor: style.borderColor,
-      strokeWidth: style.borderWidth,
-      useOriginalColors: style.useOriginalColors,
-      imageId
-    });
-
-    if (!map.getLayer(DOT_LAYER_ID)) {
-      map.addLayer({
-        id: DOT_LAYER_ID,
-        type: "symbol",
-        source: DOT_SOURCE_ID,
-        layout: {
-          "icon-image": imageId,
-          "icon-size": style.size,
-          "icon-rotate": style.rotate,
-          "icon-rotation-alignment": "map",
-          "icon-allow-overlap": true,
-          "icon-ignore-placement": true,
-          "icon-anchor": "center"
-        }
-      });
-    } else {
-      map.setLayoutProperty(DOT_LAYER_ID, "icon-image", imageId);
-      map.setLayoutProperty(DOT_LAYER_ID, "icon-size", style.size);
-      map.setLayoutProperty(DOT_LAYER_ID, "icon-rotate", style.rotate);
-    }
-  };
-
-  applyMarkerStyle();
-
-  // Re-apply after any style reload
-  map.on("styledata", applyMarkerStyle);
-  return () => map.off("styledata", applyMarkerStyle);
-}, [loaded, map, currentAction]);
-
-
-
-
-
-// 2) Animated track controller (plays ALL parts, antimeridian-safe, pause/resume)
-useEffect(() => {
-  if (!loaded || !map) return;
-
-  const SOURCE_ID = "icon-anim";
-  const DOT_SOURCE_ID = "icon-dot";
+  const SOURCE_ID = "vessel-anim";
+  const DOT_SOURCE_ID = "vessel-dot";
 
 
   let parts = [];            // array of coordinate arrays (each "part" is a LineString)
@@ -376,7 +150,7 @@ useEffect(() => {
   let isPaused = false;
 
   // “session” state
-  let currentTrackFile = null;
+  let currentVesselFile = null;
   let speed = 2;
 
   
@@ -431,8 +205,8 @@ const setDot = (coord) => {
     return features;
   };
 
-  const loadTrack = async (trackFile) => {
-    const res = await fetch(trackFile);
+  const loadVessel = async (vesselFile) => {
+    const res = await fetch(vesselFile);
     const gj = await res.json();
 
     const feats = gj?.features || [];
@@ -453,7 +227,7 @@ const setDot = (coord) => {
     pointIdx = 0;
     isPaused = false;
 
-    // keep currentTrackFile so you can decide whether to restart or not
+    // keep currentVesselFile so you can decide whether to restart or not
     setFeatures([]); // clear drawn line
     setDot([]);
 
@@ -523,7 +297,7 @@ const getBoundsFromParts = () => {
 // trackAnimation.start(options)
 //
 // Options you can set from config.js:
-//   trackFile: "/data/tracks/YourFile.geojson"  (required)
+//   vesselFile: "/data/tracks/YourFile.geojson"  (required)
 //   speed: Number
 //     - how fast the animation advances per frame (higher = faster).
 //   camera: "chapter" | "static" | "start" | "fit"
@@ -538,41 +312,37 @@ const getBoundsFromParts = () => {
 //   restart: boolean
 //     - force reloading and restart the animation from the beginning.
 const start = async ({
+  vesselFile,
   trackFile,
   speed: sp = 2,
   camera = "chapter",       // "chapter" | "static" | "start" | "fit"
   cameraPadding = 80,       // used by "fit"
   flyToStart,               // optional override; if omitted we infer from camera
-  restart = false,
-  marker
+  restart = false
 } = {}) => {
+    const file = trackFile || vesselFile;
 
-    if (!trackFile) {
-      console.warn("trackAnimation.start: missing trackFile");
+    if (!file) {
+      console.warn("trackAnimation.start: missing trackFile/vesselFile");
       return;
     }
-    // Remember last marker settings so the dot layer can switch to SVG immediately.
-    if (typeof window !== "undefined") {
-      window.__TRACK_MARKER__ = marker || null;
-    }
 
-
-    // same icon + not restarting: just resume where we left off
-    if (currentTrackFile === trackFile && parts.length && !restart) {
+    // same vessel + not restarting: just resume where we left off
+    if (currentVesselFile === file && parts.length && !restart) {
       speed = sp;
       resume();
       return;
     }
 
-    // new icon OR forced restart
-    currentTrackFile = trackFile;
+    // new vessel OR forced restart
+    currentVesselFile = file;
     speed = sp;
     isPaused = false;
 
-    await loadTrack(trackFile);
+    await loadVessel(file);
     if (!parts.length) return;
 
-    // reset progress only when starting new icon or forced restart
+    // reset progress only when starting new vessel or forced restart
     if (animId) cancelAnimationFrame(animId);
     animId = null;
     partIdx = 0;

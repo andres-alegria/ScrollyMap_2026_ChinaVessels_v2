@@ -8,9 +8,9 @@ export default {
   theme: 'mongabay',
 
   intro: {
-    title: 'Dual-purpose',
-    subtitle: "To understand how a Chinese research vessel might be used for both civilian and military roles, consider the paths taken within the last six months by a vessel known as the Hai Yang Di Zhi Liu Hao.",
-    date: 'March 3, 2026',
+    title: 'Dual-purpose?',
+    subtitle: "To understand how a Chinese research vessel might undertake civilian and military roles, consider the travels by since September of the Hai Yang Di Zhi Liu Hao.",
+    date: 'March 18, 2026',
 
    social: [
       {
@@ -34,7 +34,7 @@ export default {
     },
   ],
   alignment: 'left',
-  footer: 'Text by Elizabeth Alberts | Graphics by Andrés Alegría',
+  footer: 'Text by Elizabeth Alberts | Edited by Andrew Lehren | Graphics by Andrés Alegría',
  
   // Chapter camera behavior
   //
@@ -81,22 +81,22 @@ export default {
   
   legend: [
              {
-          title: 'ISA Exploration Areas',
+          title: 'ISA-approved exploration areas',
           color: '#f8f8f8',
           border: '#438c95',
         },
         {
-          title: 'ISA Reserve Areas',
+          title: 'ISA-approved reserve areas',
           color: '#bbe8ad',
           border: '#f8f8f8',
         },
                 {
-          title: 'Exclusive Economic Zones (EZZs)',
+          title: 'Exclusive Economic Zones',
           color: '#a699b6',
           border: '#f8f8f8',
         },
                         {
-          title: 'Deep-sea mineral areas',
+          title: 'Significant deposits of deep-sea minerals',
           color: '#000000',
           pattern: 'Hash',
         },
@@ -108,40 +108,30 @@ export default {
       options: {
       trackFile: "/data/tracks/Haiyang_Dizhi_Liuhao_track_1Sept.geojson",
       speed: 5,
+      line: {
+      color: "#e0ce63",
+      width: 3,
+      opacity: 1
+    },
       marker: {
         type: "svg",
         svg: "boat.svg", // put SVG in /public/
         size: 1,                         // icon-size
-        color: "#181818",                   // optional (best for monochrome SVGs)
-        borderColor: "#f8f8f8",   // stroke
+        color: "#e0ce63",                   // optional (best for monochrome SVGs)
+        borderColor: "#181818",   // stroke
         borderWidth: 1,          // stroke-width
         rotate: 0                           // degrees
       },
       }
     },
-       {
-         
-      layer: 'Haiyangdizhiliuhao4Dec',
-      opacity: 0,
-    },
-         {
-         
-      layer: 'Haiyangdizhiliuhao3Nov',
-      opacity: 0,
-    },
-       {
-         
-      layer: 'Haiyangdizhiliuhao2Oct',
-      opacity: 0,
-    },
-       {
-         
-      layer: 'Haiyangdizhiliuhao1Sep',
-      opacity: 0,
-    }
+  { layer: 'Haiyangdizhiliuhao4Dec', opacity: 0 },
+  { layer: 'Haiyangdizhiliuhao3Nov', opacity: 0 },
+  { layer: 'Haiyangdizhiliuhao2Oct', opacity: 0 },
+  { layer: 'Haiyangdizhiliuhao1Sep', opacity: 0 }
   ],
   onChapterExit: [
-    { callback: "trackAnimation.resume" },
+    { callback: "trackAnimation.resume" }
+    ,
   ]
 },
 
@@ -157,22 +147,22 @@ export default {
 
 legend: [
              {
-          title: 'ISA Exploration Areas',
+          title: 'ISA-approved exploration areas',
           color: '#f8f8f8',
           border: '#438c95',
         },
         {
-          title: 'ISA Reserve Areas',
+          title: 'ISA-approved reserve areas',
           color: '#bbe8ad',
           border: '#f8f8f8',
         },
                 {
-          title: 'Exclusive Economic Zones (EZZs)',
+          title: 'Exclusive Economic Zones',
           color: '#a699b6',
           border: '#f8f8f8',
         },
                         {
-          title: 'Deep-sea mineral areas',
+          title: 'Significant deposits of deep-sea minerals',
           color: '#000000',
           pattern: 'Hash',
         },
@@ -183,7 +173,7 @@ legend: [
 
   html: `
     <p>
-      The ship appeared to survey a stretch of ocean just outside of the COMRA license area. Media accounts reported that researchers collected data, samples of seabed sediment and nodules, as well as deep-sea organisms and seawater. Footage from the expedition shows vast swathes of polymetallic nodules. The China Geological Survey did not respond to Mongabay’s request for more information.
+ The ship appeared to survey a stretch of ocean just outside of the COMRA licensed area. Footage from the expedition shows vast swathes of polymetallic nodules. Media reported researchers collected data, including samples of seabed sediment nodules, deep-sea organisms and seawater.
     </p>
 
     <div style="position:relative; padding-top:56.25%; height:0; overflow:hidden; border-radius:12px;">
@@ -207,28 +197,28 @@ legend: [
       alignment: 'left',
       hidden: false,
       title: 'October 2025',
-      description: "<p>In October — while the expedition was still reportedly taking place — the vessel traveled west through the Northern Mariana Islands, a U.S. commonwealth that serves as a vital military hub, before zigzagging up and down the border of its exclusive economic zone (EEZ) as well as just outside the EEZ of neighboring Guam, another U.S. territory.</p> <br> <p>Tom Shugart, a former U.S. Navy submarine warfare officer and expert in undersea warfare with a focus on the Indo-Pacific region, told Mongabay and CNN that he believed the vessel could have motives beyond deep-sea research.</p>",
+      description: "<p>In October — while the expedition was still reportedly taking place — the vessel traveled west through the Northern Mariana Islands, a U.S. territory that serves as a vital military hub, before zigzagging up and down the border of its exclusive economic zone (EEZ). It also sailed just outside the EEZ of neighboring Guam, another U.S. territory.</p> <br> <p>Tom Shugart, a former U.S. Navy submarine warfare officer and expert in undersea warfare, told Mongabay and CNN that he believed the vessel could have motives beyond deep-sea research.</p>",
        
       location: { center: [130.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
 
 legend: [
              {
-          title: 'ISA Exploration Areas',
+          title: 'ISA-approved exploration areas',
           color: '#f8f8f8',
           border: '#438c95',
         },
         {
-          title: 'ISA Reserve Areas',
+          title: 'ISA-approved reserve areas',
           color: '#bbe8ad',
           border: '#f8f8f8',
         },
                 {
-          title: 'Exclusive Economic Zones (EZZs)',
+          title: 'Exclusive Economic Zones',
           color: '#a699b6',
           border: '#f8f8f8',
         },
                         {
-          title: 'Deep-sea mineral areas',
+          title: 'Significant deposits of deep-sea minerals',
           color: '#000000',
           pattern: 'Hash',
         },
@@ -247,33 +237,17 @@ legend: [
         type: "svg",
         svg: "boat.svg", // put SVG in /public/
         size: 1,                         // icon-size
-        color: "#181818",                   // optional (best for monochrome SVGs)
-        borderColor: "#f8f8f8",   // stroke
+        color: "#e0ce63",                   // optional (best for monochrome SVGs)
+        borderColor: "#181818",   // stroke
         borderWidth: 1,          // stroke-width
         rotate: 0                           // degrees
       },
       }
     },
-       {
-         
-      layer: 'Haiyangdizhiliuhao4Dec',
-      opacity: 0,
-    },
-         {
-         
-      layer: 'Haiyangdizhiliuhao3Nov',
-      opacity: 0,
-    },
-       {
-         
-      layer: 'Haiyangdizhiliuhao2Oct',
-      opacity: 0,
-    },
-       {
-         
-      layer: 'Haiyangdizhiliuhao1Sep',
-      opacity: 1,
-    }
+  { layer: 'Haiyangdizhiliuhao4Dec', opacity: 0 },
+  { layer: 'Haiyangdizhiliuhao3Nov', opacity: 0 },
+  { layer: 'Haiyangdizhiliuhao2Oct', opacity: 0 },
+  { layer: 'Haiyangdizhiliuhao1Sep', opacity: 1 }
   ],
   onChapterExit: [
     { callback: "trackAnimation.resume" },
@@ -290,11 +264,10 @@ legend: [
 
  html:
 `   <p>
-“That’s on the route that U.S. submarines might transit from Guam to places West,” said
-Shugart. He said he believed it was possible that the vessel could be leaving behind sensors at 4,600 meters below the ocean’s surface to record a submarine’s unique sound signature — the noise and vibrations a vessel makes in the water when it moves past. 
+“That’s on the route that U.S. submarines might transit from Guam to places West,” said Shugart. He said he believed it was possible that the vessel could be leaving behind sensors at 4,600 meters below the ocean’s surface to record a submarine’s unique sound signature — the noise and vibrations a vessel makes in the water when it moves past.
 </p>
 <p>
-“The sound signature of our submarines is a very, very valuable piece of information for them to get, so they know what they're looking for, what they're hunting for,” Shugart said. “Because if you don’t know what those frequencies are, then it's very difficult to pick a submarine out of a needle in the haystack -- out of all the other noise that’s in the ocean.”
+“The sound signature of our submarines is a very, very valuable piece of information for them to get, so they know what they're looking for, what they're hunting for,” Shugart said. “Because if you don’t know what those frequencies are, then it's very difficult to pick a submarine out of a needle in the haystack — out of all the other noise that’s in the ocean.”
  </p> `
 },  
 
@@ -304,7 +277,7 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
       alignment: 'left',
       hidden: false,
       title: 'November 2025',
-      description: "<p>A month later, while the Hai Yang Di Zhi Liu Hao was still reportedly on its research expedition, it  journeyed into the EEZ of the Federated States of Micronesia (FSM), a U.S.-allied island nation that has previously called for a moratorium on deep-sea mining. FSM includes the state of Yap, where the U.S. Air Force is investing $400 million to extend the island’s international airport runway to support American military operations. Guam and Micronesia are considered part of the “Second Island Chain,” a US line of defense against potential Chinese military aggression and a critical component of US Indo-Pacific strategy under Trump.</p><br><p>The Micronesian government did not respond to Mongabay and CNN’s questions about whether it had given China permission to conduct deep-sea research in its EEZ.",
+      description: "<p>A month later, while the Hai Yang Di Zhi Liu Hao was still reportedly on its research expedition, it journeyed into the EEZ of the Federated States of Micronesia (FSM), a U.S.ally.Guam and Micronesia are considered part of the “Second Island Chain,” a US line of defense against potential Chinese military aggression.",
        
       location: { center: [130.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
 
@@ -323,33 +296,18 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
         type: "svg",
         svg: "boat.svg", // put SVG in /public/
         size: 1,                         // icon-size
-        color: "#181818",                   // optional (best for monochrome SVGs)
-        borderColor: "#f8f8f8",   // stroke
+        color: "#e0ce63",                   // optional (best for monochrome SVGs)
+        borderColor: "#181818",   // stroke
         borderWidth: 1,          // stroke-width
         rotate: 0                           // degrees
       },
       }
     },
-       {
-         
-      layer: 'Haiyangdizhiliuhao4Dec',
-      opacity: 0,
-    },
-         {
-         
-      layer: 'Haiyangdizhiliuhao3Nov',
-      opacity: 0,
-    },
-       {
-         
-      layer: 'Haiyangdizhiliuhao2Oct',
-      opacity: 1,
-    },
-       {
-         
-      layer: 'Haiyangdizhiliuhao1Sep',
-      opacity: 1,
-    }
+  { layer: 'Haiyangdizhiliuhao4Dec', opacity: 0 },
+  { layer: 'Haiyangdizhiliuhao3Nov', opacity: 0 },
+  { layer: 'Haiyangdizhiliuhao2Oct', opacity: 1 },
+  { layer: 'Haiyangdizhiliuhao1Sep', opacity: 1 }
+
   ],
   onChapterExit: [
     { callback: "trackAnimation.resume" },
@@ -362,7 +320,7 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
       alignment: 'left',
       hidden: false,
       title: 'December 2025',
-      description: "The Hai Yang Di Zhi Liu Hao then cruised through the Philippine Sea before sweeping north of Taiwan. On Dec. 13,  it docked in Sanya, a strategic maritime gateway and home to Chinese nuclear submarines.<b>",
+      description: "The Hai Yang Di Zhi Liu Hao then cruised through the Philippine Sea before sweeping north of Taiwan. On Dec. 13, it docked in Sanya, a strategic Chinese naval base.<b>",
        
       location: { center: [111.0, 20.0], zoom: 4.75, pitch: 0, bearing: 0 },
       
@@ -380,33 +338,18 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
         type: "svg",
         svg: "boat.svg", // put SVG in /public/
         size: 1,                         // icon-size
-        color: "#181818",                   // optional (best for monochrome SVGs)
-        borderColor: "#f8f8f8",   // stroke
+        color: "#e0ce63",                   // optional (best for monochrome SVGs)
+        borderColor: "#181818",   // stroke
         borderWidth: 1,          // stroke-width
         rotate: 0                           // degrees
       },
       }
     },
-       {
-         
-      layer: 'Haiyangdizhiliuhao4Dec',
-      opacity: 0,
-    },
-         {
-         
-      layer: 'Haiyangdizhiliuhao3Nov',
-      opacity: 1,
-    },
-       {
-         
-      layer: 'Haiyangdizhiliuhao2Oct',
-      opacity: 1,
-    },
-       {
-         
-      layer: 'Haiyangdizhiliuhao1Sep',
-      opacity: 1,
-    }
+  { layer: 'Haiyangdizhiliuhao4Dec', opacity: 0 },
+  { layer: 'Haiyangdizhiliuhao3Nov', opacity: 1 },
+  { layer: 'Haiyangdizhiliuhao2Oct', opacity: 1 },
+  { layer: 'Haiyangdizhiliuhao1Sep', opacity: 1 }
+
   ],
   onChapterExit: [
     { callback: "trackAnimation.resume" },
@@ -423,17 +366,15 @@ Shugart. He said he believed it was possible that the vessel could be leaving be
 
  html:
 `   <p>
-James Fanell, the former director of intelligence and information operations for the Pacific Fleet for the U.S. navy, said it is unusual that the research vessel docked in Sanya, and not its home port. 
+James Fanell, the former director of intelligence and information operations for the U.S. Navy’s Pacific Fleet, said it is unusual that the research vessel docked in Sanya rather than its home port. 
 </p>
 
 <p> 
-“Returning to Sanya is of interest because of the home-porting of PLA (People's Liberation Army) Navy ballistic missile submarines as well as the Shandong aircraft carrier,” he said in an email.
+“Returning to Sanya is of interest because of the home-porting of PLA (People's Liberation Army) Navy ballistic missile submarines as well as the Shandong aircraft carrier,” he said.
 </p>
 
 <p> 
-He said he suspected data collected during the journey would go to the Chinese Navy “to improve their situational awareness in the Philippine Sea,” where China has been accused by Manila of challenging Philippine sovereignty through "grey zone" tactics, including the alleged harassment of fishermen, blocking of resupply missions, and use of water cannons against Philippine vessels.
- The Philippine Sea is also considered a focal point for U.S.-China competition, especially as China claims sovereignty over a large swath of the Philippine EEZ.
-</p>
+Fanell said he suspected data collected during the journey would go to the Chinese Navy “to improve their situational awareness in the Philippine Sea,” where China has been accused by Manila of challenging Philippine sovereignty through "grey zone" tactics, including the alleged harassment of fishermen, blocking of resupply missions, and use of water cannons against Philippine vessels. The Philippine Sea is also considered a focal point for U.S.-China friction, especially as China claims sovereignty over a large swath of the Philippine EEZ.</p>
 
 <p> 
 “This ‘expedition’ was very clearly dual-purpose,” Fanell said.
