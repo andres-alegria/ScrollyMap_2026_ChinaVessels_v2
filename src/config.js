@@ -10,7 +10,7 @@ export default {
   intro: {
     title: 'Dual-purpose?',
     subtitle: "To understand how a Chinese research vessel might undertake civilian and military roles, consider the travels by since September of the Hai Yang Di Zhi Liu Hao.",
-    date: 'March 18, 2026',
+    date: 'March 24, 2026',
 
    social: [
       {
