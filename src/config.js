@@ -34,7 +34,7 @@ export default {
     },
   ],
   alignment: 'left',
-  footer: 'Text by Elizabeth Alberts | Edited by Andrew Lehren | Graphics by Andrés Alegría | Banner photo by NOAA',
+  footer: 'Text by Elizabeth Alberts and Kara Fox | Edited by Andrew Lehren | Graphics by Andrés Alegría | Banner photo by NOAA',
  
   // Chapter camera behavior
   //
