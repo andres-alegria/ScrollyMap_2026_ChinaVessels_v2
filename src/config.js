@@ -9,7 +9,7 @@ export default {
 
   intro: {
     title: 'Dual-purpose?',
-    subtitle: "To understand how a Chinese research vessel might undertake civilian and military roles, consider the travels by since September of the Hai Yang Di Zhi Liu Hao.",
+    subtitle: "To understand how a Chinese research vessel might be used for both civilian and military roles, consider the paths taken within the last six months by a ship known as the Hai Yang Di Zhi Liu Hao, or Marine Geology No. 6.",
     date: 'March 24, 2026',
 
    social: [
@@ -75,7 +75,7 @@ export default {
   alignment: 'left',
 
   title: 'September 2025',
-  description: "The Hai Yang Di Zhi Liu Hao ventured out towards the COMRA’s ISA-approved area in the Northwest Pacific. According to the Guangzhou Marine Geological Survey, a research institution of the China Geological Survey, funded by the government, the vessel was on a 95-day research expedition, which ended Dec. 2, 2025.",
+  description: "In September 2025, it ventured out toward COMRA’s ISA-licensed area in the Northwest Pacific. According to the Guangzhou Marine Geological Survey, a research institution of the China Geological Survey of the Ministry of Natural Resources, the vessel was on a 95-day research expedition, which ended Dec. 2, 2025.",
 
   location: { center: [130.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
   
@@ -91,7 +91,7 @@ export default {
           border: '#f8f8f8',
         },
                 {
-          title: 'Exclusive Economic Zones',
+          title: 'Exclusive economic zones',
           color: '#a699b6',
           border: '#f8f8f8',
         },
@@ -157,7 +157,7 @@ legend: [
           border: '#f8f8f8',
         },
                 {
-          title: 'Exclusive Economic Zones',
+          title: 'Exclusive economic zones',
           color: '#a699b6',
           border: '#f8f8f8',
         },
@@ -173,7 +173,7 @@ legend: [
 
   html: `
     <p>
- The ship appeared to survey a stretch of ocean just outside of the COMRA licensed area. Footage from the expedition shows vast swathes of polymetallic nodules. Media reported researchers collected data, including samples of seabed sediment nodules, deep-sea organisms and seawater.
+ The ship appeared to survey a stretch of ocean just outside of the COMRA license area. Media accounts reported that researchers collected data, samples of seabed sediment and nodules as well as deep-sea organisms and seawater. Footage from the expedition shows vast swaths of polymetallic nodules. The China Geological Survey did not respond to a request for more information.
     </p>
 
     <div style="position:relative; padding-top:56.25%; height:0; overflow:hidden; border-radius:12px;">
@@ -197,7 +197,7 @@ legend: [
       alignment: 'left',
       hidden: false,
       title: 'October 2025',
-      description: "<p>In October — while the expedition was still reportedly taking place — the vessel traveled west through the Northern Mariana Islands, a U.S. territory that serves as a vital military hub, before zigzagging up and down the border of its exclusive economic zone (EEZ). It also sailed just outside the EEZ of neighboring Guam, another U.S. territory.</p> <br> <p>Tom Shugart, a former U.S. Navy submarine warfare officer and expert in undersea warfare, told Mongabay and CNN that he believed the vessel could have motives beyond deep-sea research.</p>",
+      description: "<p>In October, the vessel traveled west through the Northern Mariana Islands, a U.S. territory that serves as a vital military hub, before zigzagging up and down the border of its exclusive economic zone (EEZ) as well as just outside the EEZ of neighboring Guam, another U.S. territory. </p> <br> <p>Tom Shugart, a former U.S. Navy submarine warfare officer and expert in undersea warfare with a focus on the Indo-Pacific region, told Mongabay and CNN that he believed the vessel could have motives beyond deep-sea research.</p>",
        
       location: { center: [130.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
 
@@ -213,7 +213,7 @@ legend: [
           border: '#f8f8f8',
         },
                 {
-          title: 'Exclusive Economic Zones',
+          title: 'Exclusive economic zones',
           color: '#a699b6',
           border: '#f8f8f8',
         },
@@ -269,7 +269,7 @@ legend: [
 
  html:
 `   <p>
-“That’s on the route that U.S. submarines might transit from Guam to places West,” said Shugart. He said he believed it was possible that the vessel could be leaving behind sensors at 4,600 meters below the ocean’s surface to record a submarine’s unique sound signature — the noise and vibrations a vessel makes in the water when it moves past.
+“That’s on the route that U.S. submarines might transit from Guam to places West,” Shugart said. He said he believed it was possible that the vessel could be leaving behind sensors deep below the ocean’s surface to record a submarine’s unique sound signature — the noise and vibrations a vessel makes in the water when it moves past.
 </p>
 <p>
 “The sound signature of our submarines is a very, very valuable piece of information for them to get, so they know what they're looking for, what they're hunting for,” Shugart said. “Because if you don’t know what those frequencies are, then it's very difficult to pick a submarine out of a needle in the haystack — out of all the other noise that’s in the ocean.”
@@ -282,7 +282,7 @@ legend: [
       alignment: 'left',
       hidden: false,
       title: 'November 2025',
-      description: "<p>A month later, while the Hai Yang Di Zhi Liu Hao was still reportedly on its research expedition, it journeyed into the EEZ of the Federated States of Micronesia (FSM), a U.S.ally.Guam and Micronesia are considered part of the “Second Island Chain,” a US line of defense against potential Chinese military aggression.",
+      description: "<p>A month later, while the Hai Yang Di Zhi Liu Hao was still reportedly on its research expedition, it journeyed into the EEZ of the Federated States of Micronesia, a nation allied with the United States that has previously called for a moratorium on deep-sea mining. The U.S. Air Force is investing $400 million to extend the island’s international airport runway to support American military operations. The U.S. also considers Guam and Micronesia part of its “Second Island Chain,” a line of defense against potential Chinese military aggression.</p> <br> <p>The Micronesian government did not respond to Mongabay and CNN’s questions about whether it had given China permission to conduct deep-sea research in its EEZ, as required by international law.</p><br>",
        
       location: { center: [130.0, 15.0], zoom: 3.0, pitch: 0, bearing: 0 },
 
@@ -331,7 +331,7 @@ legend: [
       alignment: 'left',
       hidden: false,
       title: 'December 2025',
-      description: "The Hai Yang Di Zhi Liu Hao then cruised through the Philippine Sea before sweeping north of Taiwan. On Dec. 13, it docked in Sanya, a strategic Chinese naval base.<b>",
+      description: "The Hai Yang Di Zhi Liu Hao then cruised through the Philippine Sea before sweeping north of Taiwan. In mid-December, it docked in Sanya, a Chinese naval base.<b>",
        
       location: { center: [111.0, 20.0], zoom: 4.75, pitch: 0, bearing: 0 },
       
@@ -382,19 +382,26 @@ legend: [
 
  html:
 `   <p>
-James Fanell, the former director of intelligence and information operations for the U.S. Navy’s Pacific Fleet, said it is unusual that the research vessel docked in Sanya rather than its home port. 
+James Fanell, the former director of intelligence and information operations for the U.S. Navy’s Pacific Fleet, said it is unusual that the research vessel docked in Sanya and not its home port. 
 </p>
 
 <p> 
-“Returning to Sanya is of interest because of the home-porting of PLA (People's Liberation Army) Navy ballistic missile submarines as well as the Shandong aircraft carrier,” he said.
+“Returning to Sanya is of interest because of the home-porting of PLA [People's Liberation Army] Navy ballistic missile submarines as well as the Shandong aircraft carrier,” he said in an email.
 </p>
 
 <p> 
-Fanell said he suspected data collected during the journey would go to the Chinese Navy “to improve their situational awareness in the Philippine Sea,” where China has been accused by Manila of challenging Philippine sovereignty through "grey zone" tactics, including the alleged harassment of fishermen, blocking of resupply missions, and use of water cannons against Philippine vessels. The Philippine Sea is also considered a focal point for U.S.-China friction, especially as China claims sovereignty over a large swath of the Philippine EEZ.</p>
+Fanell said he suspected data collected during the journey would go to the Chinese Navy “to improve their situational awareness in the Philippine Sea.” Manila has accused China of challenging Philippine sovereignty there through "grey zone" tactics, including the alleged harassment of fishermen, blocking of resupply missions and use of water cannons against Philippine vessels in disputed waters. The Philippine Sea is also considered a focal point for U.S.-China friction, especially as China claims sovereignty over a large swath of the Philippine EEZ.</p>
 
 <p> 
 “This ‘expedition’ was very clearly dual-purpose,” Fanell said.
-</p> `
+</p> 
+
+<p> 
+“China did not respond to Mongabay and CNN’s questions about this incident or allegations of “grey zone” tactics. But the Ministry of Foreign Affairs said China “strictly supervises Chinese contractors involved in international seabed exploration. These contractors have consistently adhered to international environmental protection standards while conducting deep-sea activities and have conscientiously accepted supervision from the ISA.”
+</p>
+
+`
+
 },      
 
   ],
